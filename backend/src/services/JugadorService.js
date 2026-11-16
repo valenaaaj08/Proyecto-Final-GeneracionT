@@ -131,5 +131,22 @@ class JugadorService {
     if (!actual.suspendido) throw new AppError(409, 'El jugador no está suspendido');
     return this.presentar(await this.repo.guardar({ ...actual, suspendido: false, amarillas: 0 }));
   }
+  // RN-26: resumen por división (solo jugadores activos)
+  async resumen() {
+    const jugadores = (await this.repo.activos()).map((j) => this.presentar(j));
+    return DIVISIONES.map((division) => {
+      const del = jugadores.filter((j) => j.division === division);
+      const cuenta = (estado) => del.filter((j) => j.estadoApto === estado).length;
+      const goleadores = del
+        .filter((j) => j.goles > 0)
+        .sort((a, b) => b.goles - a.goles || a.apellido.localeCompare(b.apellido))
+        .slice(0, 3)
+        .map((j) => ({ id: j.id, nombre: j.nombre, apellido: j.apellido, goles: j.goles }));
+      return {
+        division, total: del.length, aptos: cuenta('apto'), vencidos: cuenta('vencido'), noAptos: cuenta('no_apto'),
+        suspendidos: del.filter((j) => j.suspendido).length, goleadores,
+      };
+    });
+  }
 }
 module.exports = JugadorService;

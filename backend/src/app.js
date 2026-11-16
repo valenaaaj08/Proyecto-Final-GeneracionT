@@ -33,6 +33,7 @@ function crearApp({ pool, jwtSecret, ahora = () => new Date(), frontendUrl = '',
   const jugadorService = new JugadorService(jugadorRepo, ahora);
   const jugadorController = new JugadorController(jugadorService);
   app.get('/api/divisiones', protegido, jugadorController.divisiones);
+  app.get('/api/resumen', protegido, jugadorController.resumen);
   app.use('/api/jugadores', protegido, jugadorRoutes(jugadorController));
   const partidoService = new PartidoService(new PartidoRepository(pool), jugadorRepo, jugadorService, ahora);
   app.use('/api/partidos', protegido, partidoRoutes(new PartidoController(partidoService)));

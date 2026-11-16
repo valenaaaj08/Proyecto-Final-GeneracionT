@@ -43,5 +43,9 @@ class JugadorController {
   rehabilitar = async (req, res, next) => {
     try { res.json(await this.servicio.rehabilitar(idDe(req))); } catch (e) { next(e); }
   };
+
+  resumen = async (req, res, next) => {
+    try { res.json(await this.servicio.resumen()); } catch (e) { next(e); }
+  };
 }
 module.exports = JugadorController;
