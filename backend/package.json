@@ -1,0 +1,26 @@
+{
+  "name": "futsal-club-backend",
+  "version": "1.0.0",
+  "description": "API del Sistema de Gestión de Planteles de Futsal",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test",
+    "db:init": "node scripts/init-db.js",
+    "db:seed": "node scripts/seed.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "express": "^5.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "pg-mem": "^3.0.14"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  }
+}
