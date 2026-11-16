@@ -10,5 +10,6 @@ module.exports = (c) => {
   router.post('/', gestion, c.crear);
   router.put('/:id', gestion, c.actualizar);
   router.delete('/:id', gestion, c.baja);
+  router.put('/:id/apto-fisico', requiereRol('admin', 'medico'), c.cargarApto);
   return router;
 };

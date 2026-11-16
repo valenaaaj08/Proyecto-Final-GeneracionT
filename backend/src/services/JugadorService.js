@@ -96,5 +96,18 @@ class JugadorService {
     const actual = await this.cargarActivo(id);
     await this.repo.guardar({ ...actual, activo: false });
   }
+  // RN-11, RN-12: carga o quita el apto físico (los permisos por rol, RN-13, se aplican en las rutas)
+  async cargarApto(id, datos) {
+    const actual = await this.cargarActivo(id);
+    const d = datos && typeof datos === 'object' ? datos : {};
+    if (typeof d.aptoFisico !== 'boolean') throw new AppError(400, 'Datos inválidos', ['aptoFisico debe ser true o false']);
+    let fechaApto = null;
+    if (d.aptoFisico) {
+      fechaApto = fechaValida(d.fechaApto);
+      if (!fechaApto) throw new AppError(400, 'Datos inválidos', ['fechaApto (AAAA-MM-DD) es obligatoria y debe ser una fecha real']);
+      if (fechaApto > hoyISO(this.ahora)) throw new AppError(400, 'Datos inválidos', ['fechaApto no puede ser futura']);
+    }
+    return this.presentar(await this.repo.guardar({ ...actual, aptoFisico: d.aptoFisico, fechaApto }));
+  }
 }
 module.exports = JugadorService;

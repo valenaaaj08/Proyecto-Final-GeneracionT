@@ -6,7 +6,7 @@ Cada tarea termina con los tests pasando y con **un commit** (`T<n>: ...`). Las 
 - [x] **T2** Base de datos PostgreSQL: esquema, conexión y datos iniciales
 - [x] **T3** Autenticación y roles (RN-01 a RN-05)
 - [x] **T4** Gestión de jugadores (RN-06 a RN-10)
-- [ ] **T5** Apto físico (RN-11 a RN-13)
+- [x] **T5** Apto físico (RN-11 a RN-13)
 - [ ] **T6** Estadísticas y suspensiones (RN-14 a RN-17)
 - [ ] **T7** Partidos y convocatorias (RN-18 a RN-25)
 - [ ] **T8** Panel resumen y manejo de errores (RN-26, RN-27)

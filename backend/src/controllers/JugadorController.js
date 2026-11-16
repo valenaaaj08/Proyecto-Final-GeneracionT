@@ -32,5 +32,8 @@ class JugadorController {
   baja = async (req, res, next) => {
     try { await this.servicio.darDeBaja(idDe(req)); res.status(204).end(); } catch (e) { next(e); }
   };
+  cargarApto = async (req, res, next) => {
+    try { res.json(await this.servicio.cargarApto(idDe(req), req.body)); } catch (e) { next(e); }
+  };
 }
 module.exports = JugadorController;
