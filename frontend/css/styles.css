@@ -1,0 +1,12 @@
+body { background: #f4f6f8; }
+.login-contenedor { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+.login-contenedor[hidden], #vista-app[hidden] { display: none; }
+.login-tarjeta { width: 100%; max-width: 380px; }
+dialog { border: 0; border-radius: .75rem; padding: 0; width: calc(100% - 2rem); max-width: 560px; box-shadow: 0 10px 40px rgba(0,0,0,.25); }
+dialog::backdrop { background: rgba(0,0,0,.45); }
+.avisos { position: fixed; right: 1rem; bottom: 1rem; z-index: 2000; display: flex; flex-direction: column; gap: .5rem; max-width: calc(100% - 2rem); }
+.tabla-plantel th, .tabla-plantel td { white-space: nowrap; vertical-align: middle; }
+.acciones { display: flex; flex-wrap: wrap; gap: .25rem; }
+.tarjeta-resumen ul { padding-left: 1.1rem; margin-bottom: 0; }
+.lista-elegibles { max-height: 260px; overflow-y: auto; }
+.nav-tabs .nav-link { cursor: pointer; }
