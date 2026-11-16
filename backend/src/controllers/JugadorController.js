@@ -35,5 +35,13 @@ class JugadorController {
   cargarApto = async (req, res, next) => {
     try { res.json(await this.servicio.cargarApto(idDe(req), req.body)); } catch (e) { next(e); }
   };
+
+  estadisticas = async (req, res, next) => {
+    try { res.json(await this.servicio.registrarEstadisticas(idDe(req), req.body)); } catch (e) { next(e); }
+  };
+
+  rehabilitar = async (req, res, next) => {
+    try { res.json(await this.servicio.rehabilitar(idDe(req))); } catch (e) { next(e); }
+  };
 }
 module.exports = JugadorController;

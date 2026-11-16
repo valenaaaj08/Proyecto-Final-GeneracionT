@@ -11,5 +11,7 @@ module.exports = (c) => {
   router.put('/:id', gestion, c.actualizar);
   router.delete('/:id', gestion, c.baja);
   router.put('/:id/apto-fisico', requiereRol('admin', 'medico'), c.cargarApto);
+  router.patch('/:id/estadisticas', gestion, c.estadisticas);
+  router.post('/:id/rehabilitar', gestion, c.rehabilitar);
   return router;
 };

@@ -109,5 +109,27 @@ class JugadorService {
     }
     return this.presentar(await this.repo.guardar({ ...actual, aptoFisico: d.aptoFisico, fechaApto }));
   }
+  // RN-14, RN-15, RN-16: las estadísticas solo se incrementan; tarjeta roja o 5 amarillas suspenden
+  async registrarEstadisticas(id, datos) {
+    const actual = await this.cargarActivo(id); // RN-15: un jugador dado de baja no existe para esta operación
+    const d = datos && typeof datos === 'object' ? datos : {};
+    const campos = ['goles', 'amarillas', 'rojas', 'asistencias'];
+    const enviados = campos.filter((c) => d[c] !== undefined);
+    if (!enviados.length) throw new AppError(400, 'Datos inválidos', ['Indicá al menos una estadística a sumar (goles, amarillas, rojas o asistencias)']);
+    const errores = enviados.filter((c) => !Number.isInteger(d[c]) || d[c] < 1).map((c) => `${c} debe ser un entero mayor o igual a 1`);
+    if (errores.length) throw new AppError(400, 'Datos inválidos', errores);
+
+    const nuevo = { ...actual };
+    for (const c of enviados) nuevo[c] += d[c];
+    if (d.rojas || nuevo.amarillas >= 5) nuevo.suspendido = true;
+    return this.presentar(await this.repo.guardar(nuevo));
+  }
+
+  // RN-17: quita la suspensión y pone las amarillas en 0; las rojas se conservan
+  async rehabilitar(id) {
+    const actual = await this.cargarActivo(id);
+    if (!actual.suspendido) throw new AppError(409, 'El jugador no está suspendido');
+    return this.presentar(await this.repo.guardar({ ...actual, suspendido: false, amarillas: 0 }));
+  }
 }
 module.exports = JugadorService;
