@@ -43,6 +43,13 @@ class JugadorRepository {
     return r.rows[0] ? aJugador(r.rows[0]) : null;
   }
 
+  async porIds(ids) {
+    if (!ids.length) return [];
+    const marcas = ids.map((_, i) => `$${i + 1}`).join(', ');
+    const r = await this.pool.query(`SELECT ${COLUMNAS} FROM jugadores WHERE id IN (${marcas})`, ids);
+    return r.rows.map(aJugador);
+  }
+
   async crear(j) {
     try {
       const r = await this.pool.query(

@@ -11,6 +11,10 @@ const JugadorRepository = require('./repositories/JugadorRepository');
 const JugadorService = require('./services/JugadorService');
 const JugadorController = require('./controllers/JugadorController');
 const jugadorRoutes = require('./routes/jugadorRoutes');
+const PartidoRepository = require('./repositories/PartidoRepository');
+const PartidoService = require('./services/PartidoService');
+const PartidoController = require('./controllers/PartidoController');
+const partidoRoutes = require('./routes/partidoRoutes');
 // [imports]
 
 // Arma la cadena Repository -> Service -> Controller -> Routes (inyección de dependencias).
@@ -25,10 +29,13 @@ function crearApp({ pool, jwtSecret, ahora = () => new Date(), frontendUrl = '',
 
   app.get('/api/health', (req, res) => res.json({ estado: 'ok' }));
   app.use('/api/auth', authRoutes(new AuthController(authService), protegido));
-  const jugadorService = new JugadorService(new JugadorRepository(pool), ahora);
+  const jugadorRepo = new JugadorRepository(pool);
+  const jugadorService = new JugadorService(jugadorRepo, ahora);
   const jugadorController = new JugadorController(jugadorService);
   app.get('/api/divisiones', protegido, jugadorController.divisiones);
   app.use('/api/jugadores', protegido, jugadorRoutes(jugadorController));
+  const partidoService = new PartidoService(new PartidoRepository(pool), jugadorRepo, jugadorService, ahora);
+  app.use('/api/partidos', protegido, partidoRoutes(new PartidoController(partidoService)));
   // [rutas]
 
   if (servirFrontend) app.use(express.static(path.join(__dirname, '../../frontend')));
