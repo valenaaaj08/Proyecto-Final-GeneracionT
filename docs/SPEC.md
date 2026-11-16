@@ -26,7 +26,7 @@ Cada regla tiene un código **RN-xx**. Los tests y la documentación se refieren
 
 - **RN-06** Datos obligatorios del jugador: `nombre` y `apellido` (mínimo 2 caracteres), `division` (una de las 7), `fechaNacimiento` (AAAA-MM-DD, fecha real y no futura), `altura` (1.00 a 2.20 m) y `peso` (20 a 150 kg).
 - **RN-07** La edad se calcula en el servidor a partir de la fecha de nacimiento. Si el cliente envía una edad, se ignora.
-- **RN-08** No puede haber dos jugadores con el mismo nombre, apellido y fecha de nacimiento (sin distinguir mayúsculas ni tildes). Si ocurre: 409.
+- **RN-08** No puede haber dos jugadores con el mismo nombre, apellido y fecha de nacimiento (sin distinguir mayúsculas ni tildes), **incluso si el jugador existente está dado de baja**. Si ocurre: 409.
 - **RN-09** La baja es lógica: el jugador queda `activo = false`, deja de aparecer en los listados y no puede ser convocado, pero sus datos se conservan.
 - **RN-10** Un jugador nuevo se crea con estadísticas en 0, sin apto físico (`no_apto`) y sin suspensión.
 

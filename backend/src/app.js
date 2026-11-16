@@ -7,6 +7,10 @@ const AuthController = require('./controllers/AuthController');
 const authRoutes = require('./routes/authRoutes');
 const { autenticar } = require('./middleware/auth');
 const AppError = require('./errors');
+const JugadorRepository = require('./repositories/JugadorRepository');
+const JugadorService = require('./services/JugadorService');
+const JugadorController = require('./controllers/JugadorController');
+const jugadorRoutes = require('./routes/jugadorRoutes');
 // [imports]
 
 // Arma la cadena Repository -> Service -> Controller -> Routes (inyección de dependencias).
@@ -21,6 +25,10 @@ function crearApp({ pool, jwtSecret, ahora = () => new Date(), frontendUrl = '',
 
   app.get('/api/health', (req, res) => res.json({ estado: 'ok' }));
   app.use('/api/auth', authRoutes(new AuthController(authService), protegido));
+  const jugadorService = new JugadorService(new JugadorRepository(pool), ahora);
+  const jugadorController = new JugadorController(jugadorService);
+  app.get('/api/divisiones', protegido, jugadorController.divisiones);
+  app.use('/api/jugadores', protegido, jugadorRoutes(jugadorController));
   // [rutas]
 
   if (servirFrontend) app.use(express.static(path.join(__dirname, '../../frontend')));
