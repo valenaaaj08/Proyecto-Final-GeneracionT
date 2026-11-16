@@ -3,7 +3,7 @@
 Cada tarea termina con los tests pasando y con **un commit** (`T<n>: ...`). Las tareas se marcan como hechas en el mismo commit.
 
 - [x] **T1** Estructura del repositorio, spec, plan y AGENTS.md
-- [ ] **T2** Base de datos PostgreSQL: esquema, conexión y datos iniciales
+- [x] **T2** Base de datos PostgreSQL: esquema, conexión y datos iniciales
 - [ ] **T3** Autenticación y roles (RN-01 a RN-05)
 - [ ] **T4** Gestión de jugadores (RN-06 a RN-10)
 - [ ] **T5** Apto físico (RN-11 a RN-13)
