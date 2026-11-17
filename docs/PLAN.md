@@ -11,5 +11,5 @@ Cada tarea termina con los tests pasando y con **un commit** (`T<n>: ...`). Las 
 - [x] **T7** Partidos y convocatorias (RN-18 a RN-25)
 - [x] **T8** Panel resumen y manejo de errores (RN-26, RN-27)
 - [x] **T9** Frontend completo (login, plantel, partidos, resumen)
-- [ ] **T10** Documentación: README, informe de pruebas, manuales y relevamiento
+- [x] **T10** Documentación: README, informe de pruebas, manuales y relevamiento
 - [ ] **T11** Despliegue: configuración para Render, Neon y Netlify
