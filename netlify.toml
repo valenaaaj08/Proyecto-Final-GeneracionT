@@ -1,0 +1,10 @@
+# Publica la carpeta frontend como sitio estático (no hay paso de compilación).
+[build]
+  publish = "frontend"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "same-origin"

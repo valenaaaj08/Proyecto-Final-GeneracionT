@@ -1,0 +1,19 @@
+# Plano (Blueprint) para publicar el backend en Render. Los secretos se cargan a mano en el panel.
+services:
+  - type: web
+    name: futsal-club-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    plan: free
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        sync: false
