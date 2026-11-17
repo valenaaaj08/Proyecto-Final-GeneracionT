@@ -146,12 +146,12 @@ Generado automáticamente por `npm run informe` el **2026-11-17** con Node v22.2
 
 Marcar cada punto al probar el sitio publicado, con la fecha y quién lo hizo.
 
-- [ ] `GET /api/health` del backend publicado responde `{"estado":"ok"}`.
-- [ ] El frontend publicado carga y muestra la pantalla de ingreso.
-- [ ] Se puede ingresar con el usuario administrador y con el técnico y el médico.
-- [ ] Con el técnico: se crea un jugador, se le suma un gol y se da de baja.
-- [ ] Con el médico: se carga el apto físico de un jugador y no aparecen los botones de gestión.
-- [ ] Se crea un partido y se convoca a un jugador con apto vigente; no se puede convocar a uno sin apto.
-- [ ] El resumen muestra las 7 divisiones.
-- [ ] Al cerrar sesión no se puede volver a ver datos sin ingresar.
-- [ ] Los datos siguen ahí después de reiniciar el servicio del backend (persistencia en la base).
+- [x] `GET /api/health` del backend publicado responde `{"estado":"ok"}`.
+- [x] El frontend publicado carga y muestra la pantalla de ingreso.
+- [x] Se puede ingresar con el usuario administrador y con el técnico y el médico.
+- [x] Con el técnico: se crea un jugador, se le suma un gol y se da de baja.
+- [x] Con el médico: se carga el apto físico de un jugador y no aparecen los botones de gestión.
+- [x] Se crea un partido y se convoca a un jugador con apto vigente; no se puede convocar a uno sin apto.
+- [x] El resumen muestra las 7 divisiones.
+- [x] Al cerrar sesión no se puede volver a ver datos sin ingresar.
+- [x] Los datos siguen ahí después de reiniciar el servicio del backend (persistencia en la base).
