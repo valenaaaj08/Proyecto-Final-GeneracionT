@@ -1,4 +1,5 @@
 // Crea las tablas en la base indicada por DATABASE_URL.  Uso: npm run db:init
+try { process.loadEnvFile(); } catch { /* sin archivo .env: se usan las variables del sistema */ }
 const { crearPool, leerEsquema } = require('../src/db');
 
 (async () => {

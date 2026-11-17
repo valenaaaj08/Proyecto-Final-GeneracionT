@@ -2,6 +2,7 @@
 // Las contraseñas salen de las variables SEED_*_PASSWORD; si faltan, se generan al azar y se muestran una sola vez.
 const crypto = require('node:crypto');
 const bcrypt = require('bcryptjs');
+try { process.loadEnvFile(); } catch { /* sin archivo .env: se usan las variables del sistema */ }
 const { crearPool } = require('../src/db');
 
 const USUARIOS = [
