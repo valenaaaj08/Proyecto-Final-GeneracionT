@@ -9,7 +9,7 @@ Proyecto final de **Generación T** — Valentino Tropea Varotrelli, ETN N°35.
 | | |
 |---|---|
 | Aplicación (frontend) | https://proyecto-final-generaciont.netlify.app/ |
-| API (backend) | https://proyecto-final-generaciont.onrender.com |
+| API (backend) | https://proyecto-final-generaciont.onrender.com/api/health |
 | Usuarios de prueba | admin@futsalclub.com, tecnico@futsalclub.com, medico@futsalclub.com |
 | Contraseñas | se entregan junto con el link en el campus (no se escriben en el repositorio) |
 
